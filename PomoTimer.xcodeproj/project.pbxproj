@@ -58,8 +58,7 @@
 		4E54FA20280EE161005BA792 /* PomoTimer */ = {
 			isa = PBXGroup;
 			children = (
-				4E54FA21280EE161005BA792 /* AppDelegate.swift */,
-				4E54FA23280EE161005BA792 /* SceneDelegate.swift */,
+				4E54FA39280EF11C005BA792 /* Delegates */,
 				4E54FA25280EE161005BA792 /* ViewController.swift */,
 				4E54FA27280EE161005BA792 /* Main.storyboard */,
 				4E54FA2D280EE165005BA792 /* Assets.xcassets */,
@@ -68,6 +67,15 @@
 				4E54FA2A280EE161005BA792 /* PomoTimer.xcdatamodeld */,
 			);
 			path = PomoTimer;
+			sourceTree = "<group>";
+		};
+		4E54FA39280EF11C005BA792 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				4E54FA21280EE161005BA792 /* AppDelegate.swift */,
+				4E54FA23280EE161005BA792 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
