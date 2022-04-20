@@ -11,11 +11,15 @@ import CoreData
 class TimerList: UITableViewController {
     
     var timers: [NSManagedObject] = []
+    var timerObject = Timer()
     
     let timerCellIdentifier = "timerCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addTimer))
+        self.navigationItem.rightBarButtonItem = rightAddButton
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let viewContext = appDelegate.persistentContainer.viewContext
@@ -33,9 +37,76 @@ class TimerList: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+    
+    @objc func addTimer() {
+        let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
+        
+        // save button
+        let saveNoteButton = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let timerToSave = textField.text
+            else {
+                print("Note has not been saved")
+                return
+            }
+            // save action:
+            self.saveTimer(name: timerToSave)
+            
+        }
+        // cancel button
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveNoteButton)
+        alert.addAction(cancelButton)
+        
+        present(alert, animated: true)
+    }
+    
+    func saveTimer(name: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let viewContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Timer", in: viewContext)!
+        
+        let timer = NSManagedObject(entity: entity, insertInto: viewContext)
+        
+        timer.setValue(25, forKey: "minute")
+        timer.setValue(0, forKey: "seconds")
+        timer.setValue(false, forKey: "isMarked")
+        timer.setValue("", forKey: "note")
+        timer.setValue(1, forKey: "intervals")
+        
+        if name == "" || name.isEmpty {
+            acceptAttention()
+            return
+        } else {
+            timer.setValue(name, forKey: "name")
+        }
+        
+        do {
+            self.
+        }
+    }
+    
+    func acceptAttention() {
+        let attentionAlert = UIAlertController(title: "Enter note name", message: "Type something in field", preferredStyle: .alert)
+        
+        let acceptButton = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.addTimer()
+        }
+        
+        attentionAlert.addAction(acceptButton)
+        present(attentionAlert, animated: true)
+    }
+    
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return timers.count
     }
@@ -45,15 +116,21 @@ class TimerList: UITableViewController {
 //        return 0
 //    }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: timerCellIdentifier, for: indexPath)
+        
+        let timer = self.timers[indexPath.row]
 
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: timerCellIdentifier, for: indexPath) as! TimerCell
+
+        cell.setName(timerName: timer.value(forKey: "name") as! String)
+        cell.setStar(isMarkedBool: timer.value(forKey: "isMarked") as! Bool)
+        
+        cell.translatesAutoresizingMaskIntoConstraints = false
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

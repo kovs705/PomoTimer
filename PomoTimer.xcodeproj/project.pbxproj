@@ -16,6 +16,8 @@
 		4E54FA31280EE165005BA792 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E54FA2F280EE165005BA792 /* LaunchScreen.storyboard */; };
 		4E54FA3B280EFBC4005BA792 /* TimerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54FA3A280EFBC4005BA792 /* TimerList.swift */; };
 		4E54FA3E280EFBFC005BA792 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54FA3D280EFBFC005BA792 /* TimerCell.swift */; };
+		4EB42B5C281069E400468E74 /* Timer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB42B5A281069E400468E74 /* Timer+CoreDataClass.swift */; };
+		4EB42B5D281069E400468E74 /* Timer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB42B5B281069E400468E74 /* Timer+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		4E54FA32280EE165005BA792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E54FA3A280EFBC4005BA792 /* TimerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerList.swift; sourceTree = "<group>"; };
 		4E54FA3D280EFBFC005BA792 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
+		4EB42B5A281069E400468E74 /* Timer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EB42B5B281069E400468E74 /* Timer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 				4E54FA39280EF11C005BA792 /* Delegates */,
 				4E54FA3C280EFBCA005BA792 /* VCs */,
 				4E54FA27280EE161005BA792 /* Main.storyboard */,
+				4EB42B5E281069EB00468E74 /* TimerGroup */,
 				4E54FA2D280EE165005BA792 /* Assets.xcassets */,
 				4E54FA2F280EE165005BA792 /* LaunchScreen.storyboard */,
 				4E54FA32280EE165005BA792 /* Info.plist */,
@@ -90,6 +95,15 @@
 				4E54FA3D280EFBFC005BA792 /* TimerCell.swift */,
 			);
 			path = VCs;
+			sourceTree = "<group>";
+		};
+		4EB42B5E281069EB00468E74 /* TimerGroup */ = {
+			isa = PBXGroup;
+			children = (
+				4EB42B5A281069E400468E74 /* Timer+CoreDataClass.swift */,
+				4EB42B5B281069E400468E74 /* Timer+CoreDataProperties.swift */,
+			);
+			path = TimerGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,10 +177,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB42B5C281069E400468E74 /* Timer+CoreDataClass.swift in Sources */,
 				4E54FA26280EE161005BA792 /* ViewController.swift in Sources */,
 				4E54FA22280EE161005BA792 /* AppDelegate.swift in Sources */,
 				4E54FA2C280EE161005BA792 /* PomoTimer.xcdatamodeld in Sources */,
 				4E54FA24280EE161005BA792 /* SceneDelegate.swift in Sources */,
+				4EB42B5D281069E400468E74 /* Timer+CoreDataProperties.swift in Sources */,
 				4E54FA3B280EFBC4005BA792 /* TimerList.swift in Sources */,
 				4E54FA3E280EFBFC005BA792 /* TimerCell.swift in Sources */,
 			);
