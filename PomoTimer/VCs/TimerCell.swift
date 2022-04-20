@@ -1,0 +1,39 @@
+//
+//  TimerCell.swift
+//  PomoTimer
+//
+//  Created by Kovs on 19.04.2022.
+//
+
+import UIKit
+
+class TimerCell: UITableViewCell {
+
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var minutesLabel: UILabel!
+    
+    @IBOutlet weak var isMarked: UIImageView!
+    
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//
+//    }
+    func setName(timerName: String) {
+        name.text = timerName
+    }
+    
+    func setStar(isMarkedBool: Bool) {
+        if isMarkedBool == false {
+            isMarked.image = UIImage(systemName: "star.fill")?.withTintColor(.yellow)
+        } else {
+            isMarked.image = UIImage(systemName: "star")?.withTintColor(.gray)
+        }
+    }
+
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+
+}
