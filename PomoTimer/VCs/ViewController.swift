@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // scrollView.isScrollEnabled = true
         scrollView.bounces = true
         scrollView.alwaysBounceVertical = true
