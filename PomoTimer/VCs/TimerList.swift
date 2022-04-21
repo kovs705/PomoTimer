@@ -10,8 +10,8 @@ import CoreData
 
 class TimerList: UITableViewController {
     
+    @IBOutlet var timerTableView: UITableView!
     var timers: [NSManagedObject] = []
-    var timerObject = Timer()
     
     let timerCellIdentifier = "timerCell"
 
@@ -20,6 +20,8 @@ class TimerList: UITableViewController {
         
         let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addTimer))
         self.navigationItem.rightBarButtonItem = rightAddButton
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        timerTableView.dataSource = self
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let viewContext = appDelegate.persistentContainer.viewContext
@@ -27,9 +29,18 @@ class TimerList: UITableViewController {
         
         do {
             timers = try viewContext.fetch(fetchRequest)
+            print("\(timers.count) timers added already")
         } catch let error as NSError {
             print("Couldn't fetch timers, \(error), \(error.userInfo)")
         }
+        
+        if !timers.isEmpty {
+            timerTableView.reloadData()
+        } else {
+            return
+        }
+        
+        // timerTableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -90,7 +101,13 @@ class TimerList: UITableViewController {
         }
         
         do {
-            self.
+            timers.insert(timer, at: 0)
+            print("Successfully added")
+            try viewContext.save()
+            
+            timerTableView.reloadData()
+        } catch let error as NSError {
+            print("Couldn't save the timer: \(error), \(error.userInfo)")
         }
     }
     
@@ -126,7 +143,7 @@ class TimerList: UITableViewController {
         cell.setName(timerName: timer.value(forKey: "name") as! String)
         cell.setStar(isMarkedBool: timer.value(forKey: "isMarked") as! Bool)
         
-        cell.translatesAutoresizingMaskIntoConstraints = false
+        // cell.translatesAutoresizingMaskIntoConstraints = false
 
         return cell
     }

@@ -14,10 +14,6 @@ class TimerCell: UITableViewCell {
     
     @IBOutlet weak var isMarked: UIImageView!
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//    }
     func setName(timerName: String) {
         name.text = timerName
     }
@@ -28,6 +24,11 @@ class TimerCell: UITableViewCell {
         } else {
             isMarked.image = UIImage(systemName: "star")?.withTintColor(.gray)
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
     }
 
 //    override func setSelected(_ selected: Bool, animated: Bool) {
