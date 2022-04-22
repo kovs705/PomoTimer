@@ -30,15 +30,12 @@ class TimerList: UITableViewController {
         do {
             timers = try viewContext.fetch(fetchRequest)
             print("\(timers.count) timers added already")
+            timerTableView.reloadData()
         } catch let error as NSError {
             print("Couldn't fetch timers, \(error), \(error.userInfo)")
         }
         
-        if !timers.isEmpty {
-            timerTableView.reloadData()
-        } else {
-            return
-        }
+        // timerTableView.reloadData()
         
         // timerTableView.reloadData()
 
@@ -124,14 +121,13 @@ class TimerList: UITableViewController {
     
 
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return timers.count
+//    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return timers.count
     }
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -143,7 +139,7 @@ class TimerList: UITableViewController {
         cell.setName(timerName: timer.value(forKey: "name") as! String)
         cell.setStar(isMarkedBool: timer.value(forKey: "isMarked") as! Bool)
         
-        // cell.translatesAutoresizingMaskIntoConstraints = false
+        cell.translatesAutoresizingMaskIntoConstraints = false
 
         return cell
     }

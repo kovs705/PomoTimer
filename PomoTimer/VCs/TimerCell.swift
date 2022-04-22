@@ -26,6 +26,17 @@ class TimerCell: UITableViewCell {
         }
     }
     
+    func setMinutes(min: Int) {
+        lazy var minString = "\(min)"
+        if min == 1 {
+            minutesLabel.text = "1 minute"
+        } else if minString.last == "1" {
+            minutesLabel.text = "\(min) minute"
+        } else {
+            minutesLabel.text = "\(min) minutes"
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

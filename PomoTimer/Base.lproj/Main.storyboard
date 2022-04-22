@@ -88,7 +88,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="isMarked" destination="98G-lx-s7E" id="nfV-j0-BvI"/>
-                                    <outlet property="minutes" destination="Gdb-hq-rii" id="xKF-2T-Ymn"/>
+                                    <outlet property="minutesLabel" destination="Gdb-hq-rii" id="anQ-jg-4P2"/>
                                     <outlet property="name" destination="bM8-Ry-3xg" id="A5r-hy-Hj0"/>
                                 </connections>
                             </tableViewCell>
