@@ -9,10 +9,11 @@ import UIKit
 
 class TimerCell: UITableViewCell {
 
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var minutesLabel: UILabel!
-    
     @IBOutlet weak var isMarked: UIImageView!
+    
     
     func setName(timerName: String) {
         name.text = timerName
@@ -35,11 +36,6 @@ class TimerCell: UITableViewCell {
         } else {
             minutesLabel.text = "\(min) minutes"
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
     }
 
 //    override func setSelected(_ selected: Bool, animated: Bool) {

@@ -21,7 +21,9 @@ class TimerList: UITableViewController {
         let rightAddButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(self.addTimer))
         self.navigationItem.rightBarButtonItem = rightAddButton
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         timerTableView.dataSource = self
+        timerTableView.register(UINib(nibName: "timerCell", bundle: nil), forCellReuseIdentifier: timerCellIdentifier)
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let viewContext = appDelegate.persistentContainer.viewContext
@@ -47,7 +49,7 @@ class TimerList: UITableViewController {
     }
     
     
-    
+        // MARK: - Add timer func
     @objc func addTimer() {
         let alert = UIAlertController(title: "New Note", message: "Enter a name for the note", preferredStyle: .alert)
         
@@ -75,6 +77,7 @@ class TimerList: UITableViewController {
         present(alert, animated: true)
     }
     
+    // MARK: - Save timer func
     func saveTimer(name: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -120,7 +123,7 @@ class TimerList: UITableViewController {
     }
     
 
-    // MARK: - Table view data source
+    // MARK: - UITableView
 //    override func numberOfSections(in tableView: UITableView) -> Int {
 //        return timers.count
 //    }
@@ -134,7 +137,7 @@ class TimerList: UITableViewController {
         
         let timer = self.timers[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: timerCellIdentifier, for: indexPath) as! TimerCell
+        let cell: TimerCell = tableView.dequeueReusableCell(withIdentifier: timerCellIdentifier, for: indexPath) as! TimerCell
 
         cell.setName(timerName: timer.value(forKey: "name") as! String)
         cell.setStar(isMarkedBool: timer.value(forKey: "isMarked") as! Bool)

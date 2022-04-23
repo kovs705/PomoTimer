@@ -44,7 +44,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="25 minutes">
                                                             <attributes>
-                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <font key="NSFont" size="17" name="HelveticaNeue-Thin"/>
                                                             </attributes>
                                                         </fragment>
@@ -86,11 +86,6 @@
                                         <constraint firstItem="W34-hQ-18E" firstAttribute="leading" secondItem="98G-lx-s7E" secondAttribute="trailing" constant="16" id="sxH-8F-Lob"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="isMarked" destination="98G-lx-s7E" id="nfV-j0-BvI"/>
-                                    <outlet property="minutesLabel" destination="Gdb-hq-rii" id="anQ-jg-4P2"/>
-                                    <outlet property="name" destination="bM8-Ry-3xg" id="A5r-hy-Hj0"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
